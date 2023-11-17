@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>chat ui</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .chat-container {
+            display: flex;
+            height: 100vh;
+        }
+
+        .sidebar {
+            width: 250px;
+            background-color: #36393f;
+            color: #ffffff;
+            padding: 20px;
+        }
+
+        .content {
+            flex: 1;
+            background-color: #f2f2f2;
+            padding: 20px;
+        }
+
+        .chat-messages {
+            height: 400px;
+            overflow-y: scroll;
+            margin-bottom: 20px;
+        }
+
+        .message {
+            margin-bottom: 10px;
+        }
+
+        .message .sender {
+            font-weight: bold;
+        }
+
+        .message .timestamp {
+            font-size: 12px;
+            color: #888888;
+            margin-left: 10px;
+        }
+
+        .input-container {width: 75%;
+            position: absolute;
+            bottom: 0;
+            display: flex;
+            align-items: center;
+        }
+
+        .input-container input[type="text"] {
+            flex: 1;
+            padding: 10px;
+            margin-top: 10px;
+            border-radius: 5px;
+            border: none;
+        }
+
+        .input-container button {
+            padding: 10px 20px;
+            margin-top: 10px;
+            background-color: #007bff;
+            color: #ffffff;
+            border: none;
+            border-radius: 5px;
+            margin-left: 10px;
+            cursor: pointer;
+        }
+       
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f5f5f5;
+        }
+        #bio-container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <div class="chat-container">
+        <div class="sidebar">
+            
+        </div>
+        <div class="content">
+            <div class="chat-messages" id="chat-messages">
+               
+            </div>
+            <div class="input-container">
+
+                <input type="text" id="message-input" placeholder="Type your message here">
+                <button onclick="sendMessage()">Send</button>
+
+                
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function sendMessage() {
+            var messageInput = document.getElementById('message-input');
+            var message = messageInput.value;
+
+            if (message.trim() !== '') {
+                var chatMessages = document.getElementById('chat-messages');
+                var messageContainer = document.createElement('div');
+                messageContainer.classList.add('message');
+                messageContainer.innerHTML = `
+                    <span class="sender">You:</span>
+                    <span class="message-text">${message}</span>
+                    <span class="timestamp">${getCurrentTimestamp()}</span>
+                `;
+                chatMessages.appendChild(messageContainer);
+                messageInput.value = '';
+            }
+        }
+
+        function getCurrentTimestamp() {
+            var date = new Date();
+            var hours = date.getHours();
+            var minutes = date.getMinutes();
+            var ampm = hours >= 12 ? 'PM' : 'AM';
+            hours = hours % 12;
+            hours = hours ? hours : 12;
+            minutes = minutes < 10 ? '0' + minutes : minutes;
+            var timestamp = hours + ':' + minutes + ' ' + ampm;
+            return timestamp;
+        }
+    </script>
+</body>
+
+<body>
+    <div id="bio-container">
+        <h1>WELCOME DEAR</h1>
+        <p id="text"></p>
+    </div>
+    
+    <script>
+        const bioText = "It's a great honor to have you here, and I appreciate your presence. As you navigate through the pages and content, THIS web site was devloped by DEVADARSAN CP 😁👻 ";
+        const bioContainer = document.getElementById("text");
+        let index = 0;
+
+        function typeBio() {
+            if (index < bioText.length) {
+                bioContainer.innerHTML += bioText.charAt(index);
+                index++;
+                setTimeout(typeBio, 50); // Adjust typing speed here (in milliseconds)
+            }
+        }
+
+        typeBio();
+    </script>
+</body>
+</html>
+
+

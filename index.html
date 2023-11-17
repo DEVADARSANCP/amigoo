@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./styles/globel.css">
+    <link rel="stylesheet" href="./styles/chat.css">
+    <link rel="shortcut icon" href="./assets/images/favicon.png" type="image/x-icon">
+    <script type="module" src="./index.js"></script> 
+    <title>hehe</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url(wallpaperflare.com_wallpaper.jpg);
+            background-size: contain;
+            background-color: #f0f0f0;
+            color: #333;
+        }
+
+        #chat-container {
+            display: flex;
+            height: 100vh;
+        }
+
+        #sidebar {
+            width: 300px;
+            background-color: #918877;
+            color: #fff;
+            padding: 20px;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+        }
+
+        #main-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        #header {
+            background-color: hsl(39, 100%, 50%);
+            color: #fff;
+            padding: 1px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        #chat-messages {
+            flex: 1;
+            overflow-y: auto;
+            padding: 20px;
+        }
+
+        .message {
+            max-width: 70%;
+            margin-bottom: 20px;
+            padding: 10px;
+            border-radius: 10px;
+        }
+
+        .message.sent {
+            background-color: #c6f8f6;
+            align-self: flex-end;
+        }
+
+        .message.received {
+            background-color: #fff;
+            align-self: flex-start;
+        }
+
+        .message p {
+            margin: 0;
+        }
+
+        #message-input {
+            padding: 10px;
+            border: none;
+            border-radius: 9px;
+            border-top: 1px solid #ccc;
+            resize: none;
+            outline: none;
+            width: calc(100% - 20px);
+        }
+
+        #footer {
+            background-color: #128c7e00;
+            color: #fff;
+            padding: 10px;
+            display: flex;
+            align-items: center;
+        }
+
+        #send-button {
+            background-color: #007bf0;
+            color: #fff;
+            border: none;
+            padding: 10px 15px;
+            margin-left: 10px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        h1{
+            margin-left: 15px;
+        }
+      
+    </style>
+</head>
+<body>
+    <div id="chat-container">
+        <div id="sidebar">
+            <div class="searchdiv">
+                <textarea id="search" placeholder="Type user name here"></textarea>
+                <button id="searchuser" onclick="sendMessage()">Search</button>
+
+            </div>
+        </div>
+
+        <div id="main-content">
+            <div id="header">
+                <h1>  USER NAME</h1>
+                <!-- Add user status, settings, etc. -->
+            </div>
+
+            <div id="chat-messages">
+                <!-- Chat messages will be displayed here -->
+                <div class="message sent">
+                    <p>🙂</p>
+                </div>
+                <div class="message received">
+                    <p>panni eduthude</p>
+                </div>
+                <!-- Add more messages as needed -->
+            </div>
+
+            <div id="footer">
+                <textarea id="message-input" placeholder="Type a message..."></textarea>
+                <button id="send-button" >Send</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function sendMessage() {
+            var messageInput = document.getElementById('message-input');
+            var message = messageInput.value;
+
+            if (message.trim() !== '') {
+                var chatMessages = document.getElementById('chat-messages');
+                var messageContainer = document.createElement('div');
+                messageContainer.classList.add('message', 'sent');
+                messageContainer.innerHTML = `
+                    <p>${message}</p>
+                `;
+                chatMessages.appendChild(messageContainer);
+                messageInput.value = '';
+            }
+        }
+    </script>
+    <!-- Firebase App (the core Firebase SDK) -->
+<script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-app.js"></script>
+
+<!-- Firebase Firestore (make sure to include the correct version) -->
+<script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-firestore.js"></script>
+
+</body>
+</html>

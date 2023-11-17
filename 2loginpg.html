@@ -1,0 +1,123 @@
+
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>LOGIN PG</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<style>body {
+  backface-visibility: hidden;
+ 
+  font-family: Arial, sans-serif;
+}
+
+
+.login-container {
+  width: 300px;
+  
+  
+  
+  border-radius: 4px;
+  padding: 20px;
+  margin: 0 auto;
+  margin-top: 90px;
+}
+
+h2 {
+  font-size: 25px;
+  text-align: center;
+}
+
+.form-control {
+  margin-bottom: 15px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+input[type="text"],
+input[type="password"] {
+  
+  background-color: rgba(0, 0, 0, 0);
+  width: 100%;
+  padding: 10px;
+  border-radius: 4px;
+  border: none;
+ 
+  
+  backface-visibility: hidden;
+}
+
+.login-button {
+  width: 100%;
+  padding: 10px;
+  background-color: #000000;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.login-button:hover {
+  transition: background-color 0.2s;
+  background-color: #04b2d1;
+  
+
+
+}
+</style>
+
+
+
+<body>
+  <div class="login-container">
+    <h2>Welcome to AMIGO</h2>
+    <form>
+      <div class="form-control">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" placeholder="Enter your username">
+      </div>
+      <div class="form-control">
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" placeholder="Enter your password">
+      </div>
+     <button   type="submit" class="login-button">Log In <a href="webchat.html"> </a> </button>
+      
+    </form>
+  </div>
+</body>
+</html>
+
+
+
+<style>
+    body{
+        background-color: rgb(12, 12, 12);
+        background-image: url(file:///C:/Users/User/Desktop/wallpaperflare.com_wallpaper.jpg);
+        background-size: cover;
+    }
+</style>
+<div>
+  <script>
+    const form = document.querySelector('form');
+    const username = document.getElementById('username');
+    const password = document.getElementById('password');
+  
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+  
+      if (username.value === '' || password.value === '') {
+        alert('Please enter both your username and password.');
+        return;
+      }
+  
+    
+      alert('Login successful!');
+    });
+  </script>
+</div>
