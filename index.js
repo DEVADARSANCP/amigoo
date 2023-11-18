@@ -34,7 +34,7 @@ document.getElementById("send-button").onclick = async function (e) {
   }
   const docRef = await addDoc(collection(db, "messages"), {
     message: document.getElementById("message-input").value,
-    // time: new Date(),
+    time: new Date(),
     // name: localStorage.getItem("name"),
   });
   document.getElementById("message-input").value = "";
@@ -65,15 +65,16 @@ const messageGet = async function () {
     // localStorage.getItem("name");
 
   let currentDate = null; // Track the current date
-  const messagesElement = document.getElementById("msgs");
+  const messagesElement = document.getElementById("messages");
   let messagesHTML = "";
 
   // Subscribe to real-time updates
   onSnapshot(
-    query(collection(db, "message"), orderBy("time", "desc")),
+    query(collection(db, "messages"), orderBy("time")),
     (snapshot) => {
       snapshot.forEach((doc) => {
         const data = doc.data();
+        // console.log(data);
         const messageDate = new Date(data.time.toMillis());
 
         // Check if the date has changed, and add a date separator
@@ -88,7 +89,7 @@ const messageGet = async function () {
             month: "long",
             day: "numeric",
           });
-          messagesHTML += `<p class="date">${messageDateString}</p>`;
+          // messagesHTML += `<p class="date">${messageDateString}</p>`;
         }
 
         const hours = messageDate.getHours();
@@ -99,16 +100,18 @@ const messageGet = async function () {
 
         const time = `${formattedHours}:${minutes} ${amPm}`;
         const message = data.message;
-        const name = data.name;
-        const messageDiv = `<div class="message">
-          <p class="name">${name}</p>
-          <p class="message-content">${message}</p>
-          <p class="time">${time}</p>
+        // const name = data.name;
+        const messageDiv = `<div id="chat-messages">
+          
+        <div class="message received">
+        <p>${message}</p>
+    </div>
+          
         </div>`;
         messagesHTML += messageDiv;
       });
 
-      // messagesElement.innerHTML = messagesHTML;
+      messagesElement.innerHTML = messagesHTML;
     }
   );
 };
