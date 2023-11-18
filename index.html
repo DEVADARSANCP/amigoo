@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="./styles/chat.css">
     <link rel="shortcut icon" href="./assets/images/favicon.png" type="image/x-icon">
     <script type="module" src="./index.js"></script> 
-    <title>hehe</title>
+    <title>chat</title>
     <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -125,17 +125,20 @@
                 <!-- Add user status, settings, etc. -->
             </div>
 
-            <div id="chat-messages">
-                <!-- Chat messages will be displayed here -->
-                <div class="message sent">
-                    <p>🙂</p>
+            <div id="messages"> 
+        
+                <div id="chat-messages">
+                    <!-- Chat messages will be displayed here -->
+                    <div class="message sent">
+                        <p>🙂</p>
+                    </div>
+                    <div class="message received">
+                        <p>panni eduthude</p>
+                    </div>
+                    <!-- Add more messages as needed -->
                 </div>
-                <div class="message received">
-                    <p>panni eduthude</p>
-                </div>
-                <!-- Add more messages as needed -->
+    
             </div>
-
             <div id="footer">
                 <textarea id="message-input" placeholder="Type a message..."></textarea>
                 <button id="send-button" >Send</button>
