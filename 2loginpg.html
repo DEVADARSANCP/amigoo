@@ -77,7 +77,7 @@ input[type="password"] {
 <body>
   <div class="login-container">
     <h2>Welcome to AMIGO</h2>
-    <form>
+    <form id="loginForm">
       <div class="form-control">
         <label for="username">Username:</label>
         <input type="text" id="username" name="username" placeholder="Enter your username">
@@ -86,8 +86,8 @@ input[type="password"] {
         <label for="password">Password:</label>
         <input type="password" id="password" name="password" placeholder="Enter your password">
       </div>
-     <button   type="submit" class="login-button">Log In <a href="webchat.html"> </a> </button>
-      
+    
+       <a href="/index.html"></a> <button   type="submit" class="login-button">Log In </button> </a>
     </form>
   </div>
 </body>
@@ -105,19 +105,22 @@ input[type="password"] {
 <div>
   <script>
     const form = document.querySelector('form');
-    const username = document.getElementById('username');
-    const password = document.getElementById('password');
-  
+   
     form.addEventListener('submit', (e) => {
       e.preventDefault();
+
+      
+      const username = document.getElementById('username').value;
+      const password = document.getElementById('password').value;
+
   
       if (username.value === '' || password.value === '') {
         alert('Please enter both your username and password.');
         return;
       }
-  
-    
       alert('Login successful!');
+
+      window.location.href = '/index.html';
     });
   </script>
 </div>
